@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Навигация по сайту</title>
+ </head>
+ <body style="background: #f0f0f0">
+   <p >МЕНЮ</p>
+   <p id="content"></p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.onmessage = function(event) {
+                console.log('Данные получены!')
+                document.querySelector('#content').textContent = event.data
+                
+                // Отправляем сообщение обратно
+                setTimeout(() => {
+                    window.top.postMessage('Ответное сообщение от фрейма!', '*')
+                }, 2000);
+            }
+        })
+    </script>
+ </body>
+</html>
